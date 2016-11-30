@@ -19,10 +19,10 @@ namespace TimeTrack.Model
         public int Id { get; set; }
         [Column("fk_employee")]
         [DataMember]
-        private int FkEmployee { get; set; }
+        public int FkEmployee { get; set; }
         [Column("fk_project")]
         [DataMember]
-        private int FkProject { get; set; }
+        public int FkProject { get; set; }
         [Column("Date")]
         [DataMember]
         public DateTime Date { get; set; }

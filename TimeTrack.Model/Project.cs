@@ -17,13 +17,13 @@ namespace TimeTrack.Model
         public int Id { get; set; }
         [Column("fk_employee")]
         [DataMember]
-        private int FKProjectManager {get;set;}
+        public int FKProjectManager {get;set;}
         [Column("name")]
         [DataMember]
         public string Name { get; set; }
         [Column("closed")]
         [DataMember]
-        public bool Closed { get; set; }
+        public int Closed { get; set; }
         [Column("startDate")]
         [DataMember]
         public DateTime StartDate { get; set; }
