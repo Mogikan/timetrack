@@ -18,7 +18,7 @@ namespace TimeTrack.Server.MVC.Controllers
         // GET: Timesheets
         public ActionResult Index()
         {
-            var transactions = db.Transactions.Include(t => t.Employee).Include(t => t.Project);
+            var transactions = db.Timesheets.Include(t => t.Employee).Include(t => t.Project);
             return View(transactions.ToList());
         }
 
@@ -29,7 +29,7 @@ namespace TimeTrack.Server.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Timesheet timesheet = db.Transactions.Find(id);
+            Timesheet timesheet = db.Timesheets.Find(id);
             if (timesheet == null)
             {
                 return HttpNotFound();
@@ -40,8 +40,8 @@ namespace TimeTrack.Server.MVC.Controllers
         // GET: Timesheets/Create
         public ActionResult Create()
         {
-            ViewBag.FkEmployee = new SelectList(db.Accounts, "Id", "FullName");
-            ViewBag.FkProject = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.FkEmployee = new SelectList(db.Employees, "Id", "FullName");
+            ViewBag.FkProject = new SelectList(db.Projects, "Id", "Name");
             return View();
         }
 
@@ -54,13 +54,13 @@ namespace TimeTrack.Server.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Transactions.Add(timesheet);
+                db.Timesheets.Add(timesheet);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FkEmployee = new SelectList(db.Accounts, "Id", "FullName", timesheet.FkEmployee);
-            ViewBag.FkProject = new SelectList(db.Categories, "Id", "Name", timesheet.FkProject);
+            ViewBag.FkEmployee = new SelectList(db.Employees, "Id", "FullName", timesheet.FkEmployee);
+            ViewBag.FkProject = new SelectList(db.Projects, "Id", "Name", timesheet.FkProject);
             return View(timesheet);
         }
 
@@ -71,13 +71,13 @@ namespace TimeTrack.Server.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Timesheet timesheet = db.Transactions.Find(id);
+            Timesheet timesheet = db.Timesheets.Find(id);
             if (timesheet == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FkEmployee = new SelectList(db.Accounts, "Id", "FullName", timesheet.FkEmployee);
-            ViewBag.FkProject = new SelectList(db.Categories, "Id", "Name", timesheet.FkProject);
+            ViewBag.FkEmployee = new SelectList(db.Employees, "Id", "FullName", timesheet.FkEmployee);
+            ViewBag.FkProject = new SelectList(db.Projects, "Id", "Name", timesheet.FkProject);
             return View(timesheet);
         }
 
@@ -94,8 +94,8 @@ namespace TimeTrack.Server.MVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FkEmployee = new SelectList(db.Accounts, "Id", "FullName", timesheet.FkEmployee);
-            ViewBag.FkProject = new SelectList(db.Categories, "Id", "Name", timesheet.FkProject);
+            ViewBag.FkEmployee = new SelectList(db.Employees, "Id", "FullName", timesheet.FkEmployee);
+            ViewBag.FkProject = new SelectList(db.Projects, "Id", "Name", timesheet.FkProject);
             return View(timesheet);
         }
 
@@ -106,7 +106,7 @@ namespace TimeTrack.Server.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Timesheet timesheet = db.Transactions.Find(id);
+            Timesheet timesheet = db.Timesheets.Find(id);
             if (timesheet == null)
             {
                 return HttpNotFound();
@@ -119,8 +119,8 @@ namespace TimeTrack.Server.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Timesheet timesheet = db.Transactions.Find(id);
-            db.Transactions.Remove(timesheet);
+            Timesheet timesheet = db.Timesheets.Find(id);
+            db.Timesheets.Remove(timesheet);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

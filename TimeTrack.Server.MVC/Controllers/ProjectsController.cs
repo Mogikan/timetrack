@@ -40,7 +40,7 @@ namespace TimeTrack.Server.MVC.Controllers
         // GET: Projects/Create
         public ActionResult Create()
         {
-            ViewBag.FKProjectManager = new SelectList(db.Accounts, "Id", "FullName");
+            ViewBag.FKProjectManager = new SelectList(db.Employees, "Id", "FullName");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace TimeTrack.Server.MVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FKProjectManager = new SelectList(db.Accounts, "Id", "FullName", project.FKProjectManager);
+            ViewBag.FKProjectManager = new SelectList(db.Employees, "Id", "FullName", project.FKProjectManager);
             return View(project);
         }
 
@@ -74,7 +74,7 @@ namespace TimeTrack.Server.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FKProjectManager = new SelectList(db.Accounts, "Id", "FullName", project.FKProjectManager);
+            ViewBag.FKProjectManager = new SelectList(db.Employees, "Id", "FullName", project.FKProjectManager);
             return View(project);
         }
 
@@ -91,7 +91,7 @@ namespace TimeTrack.Server.MVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FKProjectManager = new SelectList(db.Accounts, "Id", "FullName", project.FKProjectManager);
+            ViewBag.FKProjectManager = new SelectList(db.Employees, "Id", "FullName", project.FKProjectManager);
             return View(project);
         }
 
