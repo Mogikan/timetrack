@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TimeTrackService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:9999/TimetrackService?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:9999/TimetrackService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:9999/TimetrackService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TimeTrack.Model" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="TimeTrackService_GetProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjects" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_GetProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_GetProjectById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectById" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_GetProjectById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_AddProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProject" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_AddProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_UpdateProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProject" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_UpdateProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_DeleteProjectById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProjectById" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_DeleteProjectById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProjectByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_GetEmployees_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployees" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_GetEmployees_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_GetEmployeeById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeById" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_GetEmployeeById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_AddEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddEmployee" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_AddEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_UpdateEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmployee" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_UpdateEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_DeleteEmployeeById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEmployeeById" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_DeleteEmployeeById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEmployeeByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_GetTimeSheets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeSheets" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_GetTimeSheets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeSheetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_GetTimeSheetById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeSheetById" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_GetTimeSheetById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeSheetByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_AddTimesheet_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTimesheet" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_AddTimesheet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTimesheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_UpdateTimeSheet_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTimeSheet" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_UpdateTimeSheet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTimeSheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_DeleteTimesheetById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTimesheetById" />
+  </wsdl:message>
+  <wsdl:message name="TimeTrackService_DeleteTimesheetById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTimesheetByIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TimeTrackService">
+    <wsdl:operation name="GetProjects">
+      <wsdl:input wsaw:Action="http://tempuri.org/TimeTrackService/GetProjects" message="tns:TimeTrackService_GetProjects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TimeTrackService/GetProjectsResponse" message="tns:TimeTrackService_GetProjects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectById">
+      <wsdl:input wsaw:Action="http://tempuri.org/TimeTrackService/GetProjectById" message="tns:TimeTrackService_GetProjectById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TimeTrackService/GetProjectByIdResponse" message="tns:TimeTrackService_GetProjectById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/TimeTrackService/AddProject" message="tns:TimeTrackService_AddProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TimeTrackService/AddProjectResponse" message="tns:TimeTrackService_AddProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/TimeTrackService/UpdateProject" message="tns:TimeTrackService_UpdateProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TimeTrackService/UpdateProjectResponse" message="tns:TimeTrackService_UpdateProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProjectById">
+      <wsdl:input wsaw:Action="http://tempuri.org/TimeTrackService/DeleteProjectById" message="tns:TimeTrackService_DeleteProjectById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TimeTrackService/DeleteProjectByIdResponse" message="tns:TimeTrackService_DeleteProjectById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployees">
+      <wsdl:input wsaw:Action="http://tempuri.org/TimeTrackService/GetEmployees" message="tns:TimeTrackService_GetEmployees_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TimeTrackService/GetEmployeesResponse" message="tns:TimeTrackService_GetEmployees_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeById">
+      <wsdl:input wsaw:Action="http://tempuri.org/TimeTrackService/GetEmployeeById" message="tns:TimeTrackService_GetEmployeeById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TimeTrackService/GetEmployeeByIdResponse" message="tns:TimeTrackService_GetEmployeeById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/TimeTrackService/AddEmployee" message="tns:TimeTrackService_AddEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TimeTrackService/AddEmployeeResponse" message="tns:TimeTrackService_AddEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/TimeTrackService/UpdateEmployee" message="tns:TimeTrackService_UpdateEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TimeTrackService/UpdateEmployeeResponse" message="tns:TimeTrackService_UpdateEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEmployeeById">
+      <wsdl:input wsaw:Action="http://tempuri.org/TimeTrackService/DeleteEmployeeById" message="tns:TimeTrackService_DeleteEmployeeById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TimeTrackService/DeleteEmployeeByIdResponse" message="tns:TimeTrackService_DeleteEmployeeById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeSheets">
+      <wsdl:input wsaw:Action="http://tempuri.org/TimeTrackService/GetTimeSheets" message="tns:TimeTrackService_GetTimeSheets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TimeTrackService/GetTimeSheetsResponse" message="tns:TimeTrackService_GetTimeSheets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeSheetById">
+      <wsdl:input wsaw:Action="http://tempuri.org/TimeTrackService/GetTimeSheetById" message="tns:TimeTrackService_GetTimeSheetById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TimeTrackService/GetTimeSheetByIdResponse" message="tns:TimeTrackService_GetTimeSheetById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTimesheet">
+      <wsdl:input wsaw:Action="http://tempuri.org/TimeTrackService/AddTimesheet" message="tns:TimeTrackService_AddTimesheet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TimeTrackService/AddTimesheetResponse" message="tns:TimeTrackService_AddTimesheet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTimeSheet">
+      <wsdl:input wsaw:Action="http://tempuri.org/TimeTrackService/UpdateTimeSheet" message="tns:TimeTrackService_UpdateTimeSheet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TimeTrackService/UpdateTimeSheetResponse" message="tns:TimeTrackService_UpdateTimeSheet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTimesheetById">
+      <wsdl:input wsaw:Action="http://tempuri.org/TimeTrackService/DeleteTimesheetById" message="tns:TimeTrackService_DeleteTimesheetById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/TimeTrackService/DeleteTimesheetByIdResponse" message="tns:TimeTrackService_DeleteTimesheetById_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="TimeTrackService" />
+</wsdl:definitions>
