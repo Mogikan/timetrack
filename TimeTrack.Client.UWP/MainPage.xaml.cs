@@ -25,13 +25,9 @@ namespace TimeTrack.Client.UWP
         public MainPage()
         {
             this.InitializeComponent();
-            Loaded += MainPage_Loaded;
-        }
 
-        private void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            EmployeesViewModel vm = new EmployeesViewModel();
-            
-        }
+            var employeesViewModel = new EmployeesViewModel();
+            this.DataContext = employeesViewModel;            
+        }        
     }
 }
