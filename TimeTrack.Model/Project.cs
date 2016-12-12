@@ -31,6 +31,7 @@ namespace TimeTrack.Model
         [DataMember]
         public DateTime FinishDate { get; set; }
         [ForeignKey("FKProjectManager")]
+        [DataMember]
         public Employee ProjectManager { get; set; }
     }
 }

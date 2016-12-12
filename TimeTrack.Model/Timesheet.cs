@@ -33,8 +33,10 @@ namespace TimeTrack.Model
         [DataMember]
         public string Notes { get; set; }
         [ForeignKey("FkEmployee")]
+        [DataMember]
         public Employee Employee { get; set; }
         [ForeignKey("FkProject")]
+        [DataMember]
         public Project Project { get; set; }
     }
 }

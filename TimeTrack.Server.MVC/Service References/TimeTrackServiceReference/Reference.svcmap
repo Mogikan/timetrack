@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3533bf90-452c-4148-9466-97bc70e17ef4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9999/TimetrackService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="TimetrackService.xsd" MetadataType="Schema" ID="d58397fd-1dbe-496e-b27d-5689f5f5648e" SourceId="1" SourceUrl="http://localhost:9999/TimetrackService?xsd=xsd2" />
+    <MetadataFile FileName="TimetrackService1.xsd" MetadataType="Schema" ID="c234f016-0028-46d4-8930-f10f1ec450d0" SourceId="1" SourceUrl="http://localhost:9999/TimetrackService?xsd=xsd1" />
+    <MetadataFile FileName="TimeTrackService.wsdl" MetadataType="Wsdl" ID="a95e21dd-c7e5-414f-ae84-9f64954ff48f" SourceId="1" SourceUrl="http://localhost:9999/TimetrackService?wsdl" />
+    <MetadataFile FileName="TimetrackService.disco" MetadataType="Disco" ID="f4241ee0-43a6-404b-af90-94e5d8280eaa" SourceId="1" SourceUrl="http://localhost:9999/TimetrackService?disco" />
+    <MetadataFile FileName="TimetrackService2.xsd" MetadataType="Schema" ID="39c65c71-d260-4935-9e9b-c8a19c6eb673" SourceId="1" SourceUrl="http://localhost:9999/TimetrackService?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

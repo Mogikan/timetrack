@@ -6,19 +6,18 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using TimeTrack.BusinessLogic;
-using TimeTrack.Model;
+using TimeTrack.Server.MVC.TimeTrackServiceReference;
 
 namespace TimeTrack.Server.MVC.Controllers
 {
     public class EmployeesController : Controller
     {
-        private TimeTrackContext db = new TimeTrackContext();
+        private TimeTrackServiceClient serviceClient = new TimeTrackServiceClient();
 
         // GET: Employees
         public ActionResult Index()
         {
-            return View(db.Employees.ToList());
+            return View(serviceClient.GetEmployees().ToList());
         }
 
         // GET: Employees/Details/5
@@ -28,7 +27,8 @@ namespace TimeTrack.Server.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
+            
+            Employee employee = serviceClient.GetEmployeeById(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -51,8 +51,7 @@ namespace TimeTrack.Server.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Employees.Add(employee);
-                db.SaveChanges();
+                serviceClient.AddEmployee(employee);                
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +65,7 @@ namespace TimeTrack.Server.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
+            Employee employee = serviceClient.GetEmployeeById(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -83,8 +82,9 @@ namespace TimeTrack.Server.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(employee).State = EntityState.Modified;
-                db.SaveChanges();
+                serviceClient.UpdateEmployee(employee);
+                //db.Entry(employee).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(employee);
@@ -97,7 +97,8 @@ namespace TimeTrack.Server.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
+            Employee employee = serviceClient.GetEmployeeById(id);
+            //Employee employee = db.Employees.Find(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -110,9 +111,7 @@ namespace TimeTrack.Server.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Employee employee = db.Employees.Find(id);
-            db.Employees.Remove(employee);
-            db.SaveChanges();
+            serviceClient.DeleteEmployeeById(id);
             return RedirectToAction("Index");
         }
 
@@ -120,7 +119,7 @@ namespace TimeTrack.Server.MVC.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                serviceClient.Close();
             }
             base.Dispose(disposing);
         }

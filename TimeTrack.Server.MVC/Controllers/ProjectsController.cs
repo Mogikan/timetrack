@@ -6,19 +6,18 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using TimeTrack.BusinessLogic;
-using TimeTrack.Model;
+using TimeTrack.Server.MVC.TimeTrackServiceReference;
 
 namespace TimeTrack.Server.MVC.Controllers
 {
     public class ProjectsController : Controller
     {
-        private TimeTrackContext db = new TimeTrackContext();
+        private TimeTrackServiceClient serviceClient = new TimeTrackServiceClient();
 
         // GET: Projects
         public ActionResult Index()
         {
-            var categories = db.Projects.Include(p => p.ProjectManager);
+            var categories = serviceClient.GetProjects();//Projects.Include(p => p.ProjectManager);
             return View(categories.ToList());
         }
 
@@ -29,7 +28,7 @@ namespace TimeTrack.Server.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Project project = db.Projects.Find(id);
+            Project project = serviceClient.GetProjectById(id.Value);
             if (project == null)
             {
                 return HttpNotFound();
@@ -40,7 +39,7 @@ namespace TimeTrack.Server.MVC.Controllers
         // GET: Projects/Create
         public ActionResult Create()
         {
-            ViewBag.FKProjectManager = new SelectList(db.Employees, "Id", "FullName");
+            ViewBag.FKProjectManager = new SelectList(serviceClient.GetEmployees(), "Id", "FullName");
             return View();
         }
 
@@ -53,12 +52,11 @@ namespace TimeTrack.Server.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Projects.Add(project);
-                db.SaveChanges();
+                serviceClient.AddProject(project);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FKProjectManager = new SelectList(db.Employees, "Id", "FullName", project.FKProjectManager);
+            ViewBag.FKProjectManager = new SelectList(serviceClient.GetEmployees(), "Id", "FullName", project.FKProjectManager);
             return View(project);
         }
 
@@ -69,12 +67,12 @@ namespace TimeTrack.Server.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Project project = db.Projects.Find(id);
+            Project project = serviceClient.GetProjectById(id.Value);
             if (project == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FKProjectManager = new SelectList(db.Employees, "Id", "FullName", project.FKProjectManager);
+            ViewBag.FKProjectManager = new SelectList(serviceClient.GetEmployees(), "Id", "FullName", project.FKProjectManager);
             return View(project);
         }
 
@@ -87,11 +85,10 @@ namespace TimeTrack.Server.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(project).State = EntityState.Modified;
-                db.SaveChanges();
+                serviceClient.UpdateProject(project);
                 return RedirectToAction("Index");
             }
-            ViewBag.FKProjectManager = new SelectList(db.Employees, "Id", "FullName", project.FKProjectManager);
+            ViewBag.FKProjectManager = new SelectList(serviceClient.GetEmployees(), "Id", "FullName", project.FKProjectManager);
             return View(project);
         }
 
@@ -102,7 +99,7 @@ namespace TimeTrack.Server.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Project project = db.Projects.Find(id);
+            Project project = serviceClient.GetProjectById(id.Value);
             if (project == null)
             {
                 return HttpNotFound();
@@ -115,9 +112,7 @@ namespace TimeTrack.Server.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Project project = db.Projects.Find(id);
-            db.Projects.Remove(project);
-            db.SaveChanges();
+            serviceClient.DeleteProjectById(id);
             return RedirectToAction("Index");
         }
 
@@ -125,7 +120,7 @@ namespace TimeTrack.Server.MVC.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                serviceClient.Close();
             }
             base.Dispose(disposing);
         }

@@ -6,19 +6,18 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using TimeTrack.BusinessLogic;
-using TimeTrack.Model;
+using TimeTrack.Server.MVC.TimeTrackServiceReference;
 
 namespace TimeTrack.Server.MVC.Controllers
 {
     public class TimesheetsController : Controller
     {
-        private TimeTrackContext db = new TimeTrackContext();
+        private TimeTrackServiceClient serviceClient = new TimeTrackServiceClient();
 
         // GET: Timesheets
         public ActionResult Index()
         {
-            var transactions = db.Timesheets.Include(t => t.Employee).Include(t => t.Project);
+            var transactions = serviceClient.GetTimeSheets();
             return View(transactions.ToList());
         }
 
@@ -29,7 +28,7 @@ namespace TimeTrack.Server.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Timesheet timesheet = db.Timesheets.Find(id);
+            Timesheet timesheet = serviceClient.GetTimeSheetById(id.Value);
             if (timesheet == null)
             {
                 return HttpNotFound();
@@ -40,8 +39,8 @@ namespace TimeTrack.Server.MVC.Controllers
         // GET: Timesheets/Create
         public ActionResult Create()
         {
-            ViewBag.FkEmployee = new SelectList(db.Employees, "Id", "FullName");
-            ViewBag.FkProject = new SelectList(db.Projects, "Id", "Name");
+            ViewBag.FkEmployee = new SelectList(serviceClient.GetEmployees(), "Id", "FullName");
+            ViewBag.FkProject = new SelectList(serviceClient.GetProjects(), "Id", "Name");
             return View();
         }
 
@@ -54,13 +53,12 @@ namespace TimeTrack.Server.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Timesheets.Add(timesheet);
-                db.SaveChanges();
+                serviceClient.AddTimesheet(timesheet);                
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FkEmployee = new SelectList(db.Employees, "Id", "FullName", timesheet.FkEmployee);
-            ViewBag.FkProject = new SelectList(db.Projects, "Id", "Name", timesheet.FkProject);
+            ViewBag.FkEmployee = new SelectList(serviceClient.GetEmployees(), "Id", "FullName", timesheet.FkEmployee);
+            ViewBag.FkProject = new SelectList(serviceClient.GetProjects(), "Id", "Name", timesheet.FkProject);
             return View(timesheet);
         }
 
@@ -71,13 +69,13 @@ namespace TimeTrack.Server.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Timesheet timesheet = db.Timesheets.Find(id);
+            Timesheet timesheet = serviceClient.GetTimeSheetById(id.Value);
             if (timesheet == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FkEmployee = new SelectList(db.Employees, "Id", "FullName", timesheet.FkEmployee);
-            ViewBag.FkProject = new SelectList(db.Projects, "Id", "Name", timesheet.FkProject);
+            ViewBag.FkEmployee = new SelectList(serviceClient.GetEmployees(), "Id", "FullName", timesheet.FkEmployee);
+            ViewBag.FkProject = new SelectList(serviceClient.GetProjects(), "Id", "Name", timesheet.FkProject);
             return View(timesheet);
         }
 
@@ -90,12 +88,11 @@ namespace TimeTrack.Server.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(timesheet).State = EntityState.Modified;
-                db.SaveChanges();
+                serviceClient.UpdateTimeSheet(timesheet);
                 return RedirectToAction("Index");
             }
-            ViewBag.FkEmployee = new SelectList(db.Employees, "Id", "FullName", timesheet.FkEmployee);
-            ViewBag.FkProject = new SelectList(db.Projects, "Id", "Name", timesheet.FkProject);
+            ViewBag.FkEmployee = new SelectList(serviceClient.GetEmployees(), "Id", "FullName", timesheet.FkEmployee);
+            ViewBag.FkProject = new SelectList(serviceClient.GetProjects(), "Id", "Name", timesheet.FkProject);
             return View(timesheet);
         }
 
@@ -106,7 +103,7 @@ namespace TimeTrack.Server.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Timesheet timesheet = db.Timesheets.Find(id);
+            Timesheet timesheet = serviceClient.GetTimeSheetById(id.Value);
             if (timesheet == null)
             {
                 return HttpNotFound();
@@ -119,9 +116,7 @@ namespace TimeTrack.Server.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Timesheet timesheet = db.Timesheets.Find(id);
-            db.Timesheets.Remove(timesheet);
-            db.SaveChanges();
+            serviceClient.DeleteTimesheetById(id);
             return RedirectToAction("Index");
         }
 
@@ -129,7 +124,7 @@ namespace TimeTrack.Server.MVC.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                serviceClient.Close();
             }
             base.Dispose(disposing);
         }
