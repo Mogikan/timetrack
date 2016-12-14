@@ -484,15 +484,6 @@
     <Content Include="Scripts\app\app.viewmodel.js" />
     <Content Include="Scripts\app\common.js" />
     <Content Include="Scripts\app\home.viewmodel.js" />
-    <Content Include="Service References\TimeTrackServiceReference\TimeTrack.Server.MVC.TimeTrackServiceReference.Employee.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\TimeTrackServiceReference\TimeTrack.Server.MVC.TimeTrackServiceReference.Project.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\TimeTrackServiceReference\TimeTrack.Server.MVC.TimeTrackServiceReference.Timesheet.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\TimeTrackServiceReference\TimetrackService.disco" />
     <None Include="Service References\TimeTrackServiceReference\configuration91.svcinfo" />
     <None Include="Service References\TimeTrackServiceReference\configuration.svcinfo" />
@@ -579,6 +570,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\TimeTrackServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TimeTrack.Model\TimeTrack.Model.csproj">
+      <Project>{22029891-547c-4dde-9c97-9acfc782f59b}</Project>
+      <Name>TimeTrack.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

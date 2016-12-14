@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace TimeTrack.Model
         [DataMember]        
         public int Id { get; set; }
         [Column("fullName")]
+        [DisplayName("Full name")]
         [DataMember]
         public string FullName { get; set; }
     }

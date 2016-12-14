@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TimeTrack.Model;
 using TimeTrack.Server.MVC.TimeTrackServiceReference;
 
 namespace TimeTrack.Server.MVC.Controllers
