@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -41,13 +42,15 @@ namespace TimeTrack.Model
         }
 
         [Column("startDate")]
-        [DataMember]
+        [DataMember(IsRequired = false)]
         [DisplayName("Start date")]
-        public DateTime StartDate { get; set; }
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? StartDate { get; set; }
         [Column("finishDate")]
         [DisplayName("Finish date")]
-        [DataMember]
-        public DateTime FinishDate { get; set; }
+        [DataMember(IsRequired =false)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? FinishDate { get; set; }
         [ForeignKey("FKProjectManager")]
         [DataMember]
         [DisplayName("Project manager")]

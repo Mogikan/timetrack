@@ -9,12 +9,12 @@
   <xs:complexType name="Project">
     <xs:sequence>
       <xs:element minOccurs="0" name="FKProjectManager" type="xs:int" />
-      <xs:element minOccurs="0" name="FinishDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FinishDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IsClosed" type="xs:boolean" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProjectManager" nillable="true" type="tns:Employee" />
-      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Project" nillable="true" type="tns:Project" />
@@ -39,7 +39,7 @@
   <xs:element name="ArrayOfTimesheet" nillable="true" type="tns:ArrayOfTimesheet" />
   <xs:complexType name="Timesheet">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Employee" nillable="true" type="tns:Employee" />
       <xs:element minOccurs="0" name="FkEmployee" type="xs:int" />
       <xs:element minOccurs="0" name="FkProject" type="xs:int" />

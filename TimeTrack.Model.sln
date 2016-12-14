@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTrack.Server.MVC", "Tim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTrack.Service.ConsoleHost", "TimeTrack.Service.ConsoleHost\TimeTrack.Service.ConsoleHost.csproj", "{F2515B85-3287-4961-8D4C-70A6375F6E06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTrack.Client.UWP", "TimeTrack.Client.UWP\TimeTrack.Client.UWP.csproj", "{12BAC7B0-0006-4323-9F17-36AF139D2880}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,28 +87,6 @@ Global
 		{F2515B85-3287-4961-8D4C-70A6375F6E06}.Release|x64.Build.0 = Release|Any CPU
 		{F2515B85-3287-4961-8D4C-70A6375F6E06}.Release|x86.ActiveCfg = Release|Any CPU
 		{F2515B85-3287-4961-8D4C-70A6375F6E06}.Release|x86.Build.0 = Release|Any CPU
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Debug|Any CPU.Build.0 = Debug|x86
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Debug|Any CPU.Deploy.0 = Debug|x86
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Debug|ARM.ActiveCfg = Debug|ARM
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Debug|ARM.Build.0 = Debug|ARM
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Debug|ARM.Deploy.0 = Debug|ARM
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Debug|x64.ActiveCfg = Debug|x64
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Debug|x64.Build.0 = Debug|x64
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Debug|x64.Deploy.0 = Debug|x64
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Debug|x86.ActiveCfg = Debug|x86
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Debug|x86.Build.0 = Debug|x86
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Debug|x86.Deploy.0 = Debug|x86
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Release|Any CPU.ActiveCfg = Release|x86
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Release|ARM.ActiveCfg = Release|ARM
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Release|ARM.Build.0 = Release|ARM
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Release|ARM.Deploy.0 = Release|ARM
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Release|x64.ActiveCfg = Release|x64
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Release|x64.Build.0 = Release|x64
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Release|x64.Deploy.0 = Release|x64
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Release|x86.ActiveCfg = Release|x86
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Release|x86.Build.0 = Release|x86
-		{12BAC7B0-0006-4323-9F17-36AF139D2880}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

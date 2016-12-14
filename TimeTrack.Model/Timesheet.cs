@@ -27,7 +27,8 @@ namespace TimeTrack.Model
         [Column("Date")]
         [DataMember]
         [DisplayName("Date")]
-        public DateTime Date { get; set; }
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? Date { get; set; }
         [Column("SpendTime")]
         [DataMember]
         [DisplayName("Spent time")]
