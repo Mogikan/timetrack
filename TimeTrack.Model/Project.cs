@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -20,10 +21,24 @@ namespace TimeTrack.Model
         public int FKProjectManager {get;set;}
         [Column("name")]
         [DataMember]
+        [DisplayName("Project")]
         public string Name { get; set; }
-        [Column("closed")]
-        [DataMember]
+        [Column("closed")]        
         public int Closed { get; set; }
+        [DataMember]
+        [NotMapped]
+        public bool IsClosed
+        {
+            get
+            {
+                return Convert.ToBoolean(Closed);
+            }
+            set
+            {
+                Closed = Convert.ToInt32(value);
+            }
+        }
+
         [Column("startDate")]
         [DataMember]
         public DateTime StartDate { get; set; }

@@ -8,10 +8,10 @@
   <xs:element name="ArrayOfProject" nillable="true" type="tns:ArrayOfProject" />
   <xs:complexType name="Project">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Closed" type="xs:int" />
       <xs:element minOccurs="0" name="FKProjectManager" type="xs:int" />
       <xs:element minOccurs="0" name="FinishDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IsClosed" type="xs:boolean" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProjectManager" nillable="true" type="tns:Employee" />
       <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />

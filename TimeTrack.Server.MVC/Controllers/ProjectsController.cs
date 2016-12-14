@@ -81,7 +81,7 @@ namespace TimeTrack.Server.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FKProjectManager,Name,Closed,StartDate,FinishDate")] Project project)
+        public ActionResult Edit([Bind(Include = "Id,FKProjectManager,Name,IsClosed,StartDate,FinishDate")] Project project)
         {
             if (ModelState.IsValid)
             {

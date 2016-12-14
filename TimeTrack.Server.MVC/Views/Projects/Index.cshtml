@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<TimeTrack.Server.MVC.TimeTrackServiceReference.Project>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Projects";
 }
 
 <h2>Index</h2>
@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Closed)
+            @Html.DisplayNameFor(model => model.IsClosed)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.StartDate)
@@ -38,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Closed)
+            @Html.DisplayFor(modelItem => item.IsClosed)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.StartDate)

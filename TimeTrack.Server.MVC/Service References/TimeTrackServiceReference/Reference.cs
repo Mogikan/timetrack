@@ -23,9 +23,6 @@ namespace TimeTrack.Server.MVC.TimeTrackServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ClosedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int FKProjectManagerField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -33,6 +30,9 @@ namespace TimeTrack.Server.MVC.TimeTrackServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsClosedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
@@ -50,19 +50,6 @@ namespace TimeTrack.Server.MVC.TimeTrackServiceReference {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Closed {
-            get {
-                return this.ClosedField;
-            }
-            set {
-                if ((this.ClosedField.Equals(value) != true)) {
-                    this.ClosedField = value;
-                    this.RaisePropertyChanged("Closed");
-                }
             }
         }
         
@@ -101,6 +88,19 @@ namespace TimeTrack.Server.MVC.TimeTrackServiceReference {
                 if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsClosed {
+            get {
+                return this.IsClosedField;
+            }
+            set {
+                if ((this.IsClosedField.Equals(value) != true)) {
+                    this.IsClosedField = value;
+                    this.RaisePropertyChanged("IsClosed");
                 }
             }
         }
